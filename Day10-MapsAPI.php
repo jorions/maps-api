@@ -35,15 +35,7 @@ if(isset($_POST["goBack"])) {
         $lastID = $lastID->fetch_array();
         $stmt->bind_param("i", $lastID[0]);
         $stmt->execute();
-        //createMapStepBack();
-
-        //get all addresses and put them into a text string
-        $allAddresses = $db->query("SELECT * FROM markers");
-        $fullList = "";
-        foreach($allAddresses as $address) {
-            $fullList .= urlencode($address["address"]) . "|";
-        }
-        $fullList = substr($fullList, 0, -1);
+        //createMapStepBack(); - commented out because it doesn't work
 
         //generate map using list
         echo "<img src=https://maps.googleapis.com/maps/api/staticmap?size=600x600&path=".$fullList.">";
